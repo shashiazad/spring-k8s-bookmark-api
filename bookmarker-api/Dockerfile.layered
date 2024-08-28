@@ -1,0 +1,15 @@
+#The first stage of our build will extract the layers
+FROM eclipse-temurin:17-jre-focal as builder
+WORKDIR application
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} application.jar
+RUN java -Djarmode=layertools -jar application.jar extract
+
+#The second stage of our builds will copy the extracted layers
+FROM eclipse-temurin:17-jre-focal
+WORKDIR application
+COPY --frm=builder application/dependencies/ ./
+COPY --frm=builder application/spring-boot-loader/ ./
+COPY --frm=builder application/snapshot-dependencies/ ./
+COPY --frm=builder application/application/ ./
+ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
