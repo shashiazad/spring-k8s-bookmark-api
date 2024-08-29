@@ -42,7 +42,7 @@ jobs:
       - name: Tag Docker Image
         if: ${{ github.ref == 'refs/heads/main' }}
         run: |
-          docker tag bookmarker-api:latest ${{ secrets.DOCKER_USERNAME }}/bookmarker-api:latest
+          docker tag ${{ secrets.DOCKER_USERNAME }}/bookmarker-api:latest ${{ secrets.DOCKER_USERNAME }}/bookmarker-api:latest
 
       - name: Push Docker Image
         if: ${{ github.ref == 'refs/heads/main' }}
