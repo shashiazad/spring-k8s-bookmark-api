@@ -27,9 +27,14 @@ jobs:
           chmod +x mvnw
           ./mvnw verify
 
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Build and Publish Docker Image
         if: ${{ github.ref == 'refs/heads/main' }}
         run: |
           ./mvnw clean package jib:dockerBuild -DskipTests
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push ${{ secrets.DOCKER_USERNAME }}/bookmarker-api
