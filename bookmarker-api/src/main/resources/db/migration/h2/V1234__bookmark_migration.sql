@@ -1,10 +1,13 @@
-create sequence bm_id_seq start with 1 increment by 50;
+-- Create the sequence
+CREATE SEQUENCE bm_id_seq
+    START WITH 1
+    INCREMENT BY 50;
 
-create table bookmarks
-(
-    id         bigint default nextval('bm_id_seq') not null,
-    title      varchar(255)                        not null,
-    url        varchar(255)                        not null,
-    created_at timestamp(6) with time zone,
-    primary key (id)
+-- Create the table
+CREATE TABLE bookmarks (
+                           id BIGINT DEFAULT nextval('bm_id_seq') NOT NULL,
+                           title VARCHAR(255) NOT NULL,
+                           url VARCHAR(255) NOT NULL,
+                           created_at TIMESTAMP(6) WITH TIME ZONE DEFAULT now(),
+                           PRIMARY KEY (id)
 );
