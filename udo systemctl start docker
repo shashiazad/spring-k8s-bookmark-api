@@ -1,0 +1,23 @@
+[0;1;32m●[0m docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Thu 2024-08-29 02:14:24 EST; 23h ago
+TriggeredBy: [0;1;32m●[0m docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 160013 (dockerd)
+      Tasks: 49
+     Memory: 339.5M
+     CGroup: /system.slice/docker.service
+             ├─160013 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+             ├─192116 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8086 -container-ip 172.18.0.2 -container-port 8081
+             └─192125 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 8086 -container-ip 172.18.0.2 -container-port 8081
+
+Aug 29 05:37:00 Dev-VM-Ubuntu dockerd[160013]: time="2024-08-29T05:37:00.293456268-05:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers"
+Aug 29 05:37:01 Dev-VM-Ubuntu dockerd[160013]: time="2024-08-29T05:37:01.095550873-05:00" level=info msg="ignoring event" container=8b929180b361eb45c1267e90225190cb4f6c3015a6e785902dd8b23266a6d87d module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Aug 29 05:38:41 Dev-VM-Ubuntu dockerd[160013]: time="2024-08-29T05:38:41.128428035-05:00" level=info msg="ignoring event" container=6616f8bb4845a80744208edd5929669f98bfcedba9004d4d3ebf8da26cfe1936 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Aug 29 05:38:41 Dev-VM-Ubuntu dockerd[160013]: time="2024-08-29T05:38:41.214337042-05:00" level=info msg="ignoring event" container=b97fecb76de56306ad05db325f3dcea2d2f5a62cd5a9c2c65fb78a3902297167 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Aug 29 05:38:41 Dev-VM-Ubuntu dockerd[160013]: time="2024-08-29T05:38:41.217430742-05:00" level=info msg="ignoring event" container=4285074f14a7ce1bb4fa92d2cadae707e80235717db85977dd75b2babd8f472f module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Aug 29 05:40:04 Dev-VM-Ubuntu dockerd[160013]: 2024/08/29 05:40:04 http2: server: error reading preface from client @: read unix /run/docker.sock->@: read: connection reset by peer
+Aug 29 05:40:07 Dev-VM-Ubuntu dockerd[160013]: time="2024-08-29T05:40:07.752404469-05:00" level=error msg=/moby.buildkit.v1.Control/Solve error="rpc error: code = Unknown desc = process \"/bin/sh -c npm run build\" did not complete successfully: exit code: 1"
+Aug 29 05:40:44 Dev-VM-Ubuntu dockerd[160013]: time="2024-08-29T05:40:44.774737287-05:00" level=error msg=/moby.buildkit.v1.Control/Solve error="rpc error: code = Unknown desc = process \"/bin/sh -c npm run build\" did not complete successfully: exit code: 1"
+Aug 29 05:41:29 Dev-VM-Ubuntu dockerd[160013]: time="2024-08-29T05:41:29.953633178-05:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers"
+Aug 29 05:41:52 Dev-VM-Ubuntu dockerd[160013]: time="2024-08-29T05:41:52.995440560-05:00" level=error msg=/moby.buildkit.v1.Control/Solve error="rpc error: code = Unknown desc = process \"/bin/sh -c npm run build\" did not complete successfully: exit code: 1"

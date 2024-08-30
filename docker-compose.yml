@@ -11,7 +11,7 @@ services:
   bookmarker-api:
     build:
       context: bookmarker-api
-      dockerfile: Dockerfile.layered
+      dockerfile: Dockerfile
     environment:
       SPRING_PROFILE_ACTIVE: docker
       SPRING_DATABASE_DRIVER_CLASS_NAME: org.postgresql.Driver
