@@ -6,18 +6,18 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=appdb
     ports:
-      - "15432:5432"
+      - "15433:5432"  # Changed from 15432 to 15433
 
   bookmarker-api:
     build:
       context: bookmarker-api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.layered
     environment:
-      SPRING_PROFILE_ACTIVE: docker
-      SPRING_DATABASE_DRIVER_CLASS_NAME: org.postgresql.Driver
-      SPRING_DATASOURCE_URL: jdbc:postgresql://bookmarker-db:5432/appdb
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATABASE_DRIVER_CLASS_NAME=org.postgresql.Driver
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://bookmarker-db:5432/appdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
     ports:
       - "18080:8080"
     restart: always
